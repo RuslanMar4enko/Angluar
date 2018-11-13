@@ -1,0 +1,35 @@
+<div class="grid-container">
+    <toaster-container></toaster-container>
+    <div class="grid-x grid-padding-x">
+        <div class="medium-12 cell">
+            <h1>Авторизация</h1>
+        </div>
+            <div class="medium-12 cell">
+                <label>Email
+                    <input type="text" placeholder="Email"
+                           [(ngModel)]="user.email"
+                           name='email'
+                           required>
+                </label>
+            </div>
+            <div class="medium-12 cell">
+                <label>Name
+                    <input type="text" placeholder="Name"
+                           [(ngModel)]="user.name"
+                           name='name'
+                           required>
+                </label>
+            </div>
+            <div class="medium-12 cell">
+                <label>Password
+                    <input type="text" placeholder="Password"
+                           [(ngModel)]="user.password"
+                           name='password'
+                           required>
+                </label>
+            </div>
+            <div class="medium-12 cell">
+                <button type="submit" class="success button" (click)="addUser()">Save</button>
+            </div>
+    </div>
+</div>
