@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../modules/User';
-import {UserService} from '../service/user.service';
+import {UserService} from '../services/user.service';
 import {ToasterService} from 'angular2-toaster';
 
 
@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
    async addUser() {
         try {
             const user = await this.userService.addUser(this.user);
+            this.toasterService.pop('success', 'Add User', 'Created new user');
             return user;
         } catch (e) {
             this.toasterService.pop('error', 'Add User', 'Email or Name is required');

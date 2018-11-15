@@ -19,4 +19,8 @@ export class UserService {
     addUser(user: User) {
            return this.http.post(this.apiUrl + 'register', user, httpOptions).toPromise();
     }
+
+    login(user: User) {
+        return this.http.post(this.apiUrl + 'login', user, httpOptions).toPromise();
+    }
 }
