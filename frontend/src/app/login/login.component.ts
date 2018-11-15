@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {User} from '../modules/User';
 import {ValidationService} from '../services/validation.service';
+import {UserService} from '../services/user.service';
+import {ToasterService} from 'angular2-toaster';
 
 
 @Component({
@@ -13,8 +15,9 @@ export class LoginComponent implements OnInit {
 
     user: User = new User();
 
-    constructor(private validService: ValidationService) {
+    constructor(private validService: ValidationService, private userService: UserService, public toasterService: ToasterService) {
     }
+
     loginForm = new FormGroup({
         email: new FormControl(this.user.email, [
             Validators.required,
@@ -32,6 +35,10 @@ export class LoginComponent implements OnInit {
             email: 'text email',
             default: 'text required'
         },
+        password: {
+            required: 'password required',
+            minlength: 'password minLength 6',
+        }
     };
 
     error(tagName: String): string {
@@ -39,14 +46,19 @@ export class LoginComponent implements OnInit {
     }
 
     getMessageValid(tagName): string {
-       return this.validService.validMessage(tagName, this.loginForm, this.messages);
+        return this.validService.validMessage(tagName, this.loginForm, this.messages);
     }
 
     ngOnInit() {
 
     }
 
-    onSubmit(): void {
-
+    async onSubmit() {
+        try {
+            const user = await this.userService.login(this.loginForm.value);
+            localStorage.setItem('token', user.token);
+        } catch (e) {
+            this.toasterService.pop('error', 'Login User', 'Email or Password incorrect');
+        }
     }
 }

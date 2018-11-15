@@ -3,4 +3,6 @@ export class User {
     name: null;
     email: null;
     password: null;
+    token: null;
+    success: null;
 }
