@@ -14,10 +14,8 @@ export class ValidationService {
     validMessage(tagName, form, messages) {
         const {controls} = form;
         for (const message in messages[tagName]) {
-            if (message === Object.keys(controls[tagName].errors)[0]) {
+            if (Object.keys(controls[tagName].errors)[0] === message) {
                 return messages[tagName][Object.keys(controls[tagName].errors)[0]];
-            } else {
-                break;
             }
         }
     }

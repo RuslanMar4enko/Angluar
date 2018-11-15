@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     messages = {
         email: {
             required: 'text required',
-            email: 'text email;',
+            email: 'text email',
             default: 'text required'
         },
     };
