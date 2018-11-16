@@ -20,7 +20,7 @@ export class UserService {
            return this.http.post<User>(this.apiUrl + 'register', user, httpOptions).toPromise();
     }
 
-    login(user): Promise<Auth> {
+    login(user: User): Promise<Auth> {
         return this.http.post<Auth>(this.apiUrl + 'login', user, httpOptions).toPromise();
     }
 }
