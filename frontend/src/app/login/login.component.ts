@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {User} from '../modules/User';
 import {ValidationService} from '../services/validation.service';
-import {UserService} from '../services/user.service';
+import {UserService} from '../services/auth/user.service';
 import {ToasterService} from 'angular2-toaster';
 
 

@@ -24,15 +24,14 @@ export class TokenInterceptor implements HttpInterceptor {
         });
 
         return next.handle(request).do((event: HttpEvent<any>) => {
-            if (event instanceof HttpResponse) {
-                console.log('azaz111');
-            }
         }, (err: any) => {
             if (err instanceof HttpErrorResponse) {
                 if (err.status === 401) {
-                    // redirect to the login route
-                    // or show a modal
-                    console.log('azaz');
+                    localStorage.removeItem('token');
+                    this.auth.refreshToken().then(data => {
+                        console.log(data.token)
+                        localStorage.setItem('token', data.token);
+                    });
                 }
             }
         });

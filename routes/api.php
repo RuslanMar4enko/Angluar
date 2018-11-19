@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::post('/login', 'AuthController@login');
 Route::post('/refresh', 'AuthController@refresh');
 Route::post('/register', 'AuthController@register');
+
+Route::group(['middleware' => 'jwt.auth'], function () {
+    Route::get('/index', 'ApiController@index');
+    Route::post('/store', 'ApiController@store');
+    Route::delete('/delete/{id}', 'ApiController@delete');
+});

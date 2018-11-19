@@ -14,13 +14,15 @@ import {ToasterModule, ToasterService} from 'angular2-toaster';
 import {LoginComponent} from './login/login.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptor} from './services/interceptor/token.interceptor';
+import { ApiComponent } from './api/api.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         HomeComponent,
         RegisterComponent,
-        LoginComponent
+        LoginComponent,
+        ApiComponent
     ],
     imports: [
         BrowserModule,
