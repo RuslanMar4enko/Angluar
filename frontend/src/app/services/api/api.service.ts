@@ -17,9 +17,14 @@ export class ApiService {
         return this.http.get<GetApi[]>(this.apiUrl + 'index').toPromise();
     }
 
-    deleteApi (apis: GetApi | number): Observable<GetApi> {
+    public deleteApi (apis: GetApi | number): Observable<GetApi> {
         const id = typeof apis === 'number' ? apis : apis.id;
         const url = `${this.apiUrl}delete/${id}`;
         return this.http.delete<GetApi>(url);
+    }
+
+    public createApi(data: object): Promise<GetApi> {
+        const url = `${this.apiUrl}store`;
+        return this.http.post<GetApi>(url, data).toPromise();
     }
 }

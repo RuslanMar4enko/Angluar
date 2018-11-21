@@ -27,9 +27,7 @@ export class TokenInterceptor implements HttpInterceptor {
         }, (err: any) => {
             if (err instanceof HttpErrorResponse) {
                 if (err.status === 401) {
-                    localStorage.removeItem('token');
                     this.auth.refreshToken().then(data => {
-                        console.log(data.token)
                         localStorage.setItem('token', data.token);
                     });
                 }

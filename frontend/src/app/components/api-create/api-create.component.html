@@ -1,0 +1,36 @@
+<div class="grid-container">
+    <div class="grid-x grid-padding-x">
+        <form class="medium-12 cell" [formGroup]="apiForm" (ngSubmit)="onCreate()">
+            <div class="medium-12 cell">
+                <label>
+                    Name:
+                    <input type="text" formControlName="name">
+                </label>
+                <small class="error-small" *ngIf="error('name')">
+                    {{getMessageValid('name')}}
+                </small>
+            </div>
+            <div class="medium-12 cell">
+                <label>
+                    Image:
+                    <input type="file" formControlName="image" (change)="onFileChanged($event)">
+                </label>
+                <small class="error-small" *ngIf="error('image')">
+                    {{getMessageValid('image')}}
+                </small>
+            </div>
+            <div class="medium-12 cell">
+                <label>
+                    Description:
+                    <textarea type="text" formControlName="description"></textarea>
+                </label>
+                <small class="error-small" *ngIf="error('description')">
+                    {{getMessageValid('description')}}
+                </small>
+            </div>
+            <div class="medium-12 cell">
+                <button [disabled]="!apiForm.valid" type="submit" class="button">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
