@@ -1,0 +1,6 @@
+<nav aria-label="Pagination">
+  <ul class="pagination">
+    <li (click)="prevPag()"><a [className]="currentPpage === 1 ? 'pagination-previous disabled' : 'pagination-previous'" aria-label="Previous"> Previous</a></li>
+    <li (click)="nextPag()"><a [className]="currentPpage === lastPage ? 'pagination-next disabled' : 'pagination-next'" aria-label="Next page">Next</a></li>
+  </ul>
+</nav>

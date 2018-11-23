@@ -10,6 +10,9 @@ import {ToasterService} from 'angular2-toaster';
 })
 export class ApiComponent implements OnInit {
     apis: GetApi[];
+    total: number;
+    current_page: number;
+    last_page: number;
 
     constructor(private apiService: ApiService, public toasterService: ToasterService) {
     }
@@ -18,16 +21,19 @@ export class ApiComponent implements OnInit {
         this.getApi();
     }
 
-
-    async getApi() {
+    async getApi(currentPage = 1) {
         try {
-            const api = await this.apiService.getApi();
-            this.apis = api;
+            const api = await this.apiService.getApi(currentPage);
+            this.apis = api['data'];
+            this.total = api['total'];
+            this.current_page = api['current_page'];
+            this.last_page = api['last_page'];
         } catch (e) {
             console.log(e);
         }
 
     }
+
 
     deleteApi(apis: GetApi): void {
         try {

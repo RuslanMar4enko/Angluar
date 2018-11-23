@@ -12,7 +12,7 @@ class ApiController extends Controller
 
     public function index(Api $api)
     {
-        return $api->latest()->get();
+        return $api->latest()->paginate(4);
     }
 
     public function store(Api $api, Request $request)

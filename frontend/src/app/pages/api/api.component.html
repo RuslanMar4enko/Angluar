@@ -25,8 +25,13 @@
             </tr>
             </tbody>
         </table>
+        <app-pagination
+                        [total]="total"
+                        [currentPpage]="current_page"
+                        [lastPage]="last_page"></app-pagination>
     </div>
     <div>
         <a class="button small medium-down-expanded" routerLink="/api/create"> Create new Api </a>
     </div>
+
 </div>

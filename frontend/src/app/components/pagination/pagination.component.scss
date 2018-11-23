@@ -1,0 +1,11 @@
+.pagination-previous::before {
+  display: inline-block;
+  margin-right: 0.5rem;
+  content: '\00ab';
+}
+
+.pagination-next::after {
+  display: inline-block;
+  margin-left: 0.5rem;
+  content: '\00bb';
+}

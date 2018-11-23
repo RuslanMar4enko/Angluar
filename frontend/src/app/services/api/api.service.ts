@@ -13,8 +13,8 @@ export class ApiService {
 
     }
 
-    public getApi(): Promise<GetApi[]> {
-        return this.http.get<GetApi[]>(this.apiUrl + 'index').toPromise();
+    public getApi(currentPage): Promise<GetApi[]> {
+        return this.http.get<GetApi[]>(this.apiUrl + 'index?page=' + currentPage).toPromise();
     }
 
     public deleteApi (apis: GetApi | number): Observable<GetApi> {
