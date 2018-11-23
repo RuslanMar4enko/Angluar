@@ -25,4 +25,11 @@ export class PaginationComponent implements OnInit {
         return this.api.getApi(this.lastPage < this.currentPpage + 1 ? this.lastPage : this.currentPpage + 1);
     }
 
+    disabledPrev(): string {
+        return this.currentPpage === 1 ? 'pagination-previous disabled' : 'pagination-previous';
+    }
+
+    disabledNext(): string {
+        return this.currentPpage === this.lastPage ? 'pagination-next disabled' : 'pagination-next';
+    }
 }
